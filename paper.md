@@ -13,23 +13,17 @@ toc: true
 
 # Introduction
 
-*TODO*
-
-`std::mdspan::at` element access with boundary checking as alternative to element access via `std::mdspan::operator[]`.
+This paper proposes element access with bounds checking to `std::mdspan` via `at()` member functions.
 
 # Motivation
 
 ## Safety
 
-*TODO*
-
-This new method is safe in the sense that it has defined behavior instead of undefined behavior. Further, the defined behavior is one that can be caught in the code by catching the exception.
+The new `at()` member functions provide memory-safe element access to `std::mdspan`, and thus have defined behavior. Out-of-bound access can be caught by catching the `std::out_of_range` exception.
 
 ## Consistency
 
-*TODO*
-
-Consistency with `std::span::at` [@P2821R4] and other containers.
+In [@P2821R4], which has been accepted into C++26, element access with bounds checking via `at()` has been added to `std::span`. One of the main motivations for this change was consistency with other containers that have element access with bounds checking via `at()`. Similarily, such element access should be added to `std::mdspan`.
 
 # Impact On the Standard
 
@@ -37,7 +31,6 @@ Consistency with `std::span::at` [@P2821R4] and other containers.
 
 Low impact:
 
-- Design similar to [@P2821R4] and [@P0009R18]
 - Signature identical to multi-dimensional `operator[]` in [@P0009R18]
 - While `.at()` previously not used with multi-dimensional arguments, this is also true for the multi-dimensional `operator[]` before it was introduced in [@P2128R6]
 
@@ -103,9 +96,7 @@ In 24.7.3.6.3 ([@mdspan.mdspan.members]), add the following immediately after th
 
 # Reference Implementation
 
-*TODO*
-
-See [@Implementation]
+The `at()` member functions have been implemented in the `std::mdspan` reference implementation from Kokkos project at Sandia National Laboratories [@kokkos/mdspan], see [@Implementation].
 
 ---
 references:
@@ -118,6 +109,9 @@ references:
   - id: version.syn
     citation-label: version.syn
     URL: https://eel.is/c++draft/version.syn
+  - id: kokkos/mdspan
+    citation-label: kokkos/mdspan
+    URL: https://github.com/kokkos/mdspan
   - id: Implementation
     citation-label: Implementation
     URL: https://github.com/kokkos/mdspan/pull/302
