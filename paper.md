@@ -27,18 +27,15 @@ In [@P2821R4], which has been accepted into C++26, element access with bounds ch
 
 # Impact On the Standard
 
-*TODO*
+The impact of this proposal on the standard is low. The proposed function signatures for the `at()` member functions are identical to the function signatures for the subscript operators as proposed in [@P0009R18].
 
-Low impact:
-
-- Signature identical to multi-dimensional `operator[]` in [@P0009R18]
-- While `.at()` previously not used with multi-dimensional arguments, this is also true for the multi-dimensional `operator[]` before it was introduced in [@P2128R6]
+One consideration is that the `.at()` operator has previously not beed used with multi-dimensional arguments, however this was also true before the possibility was introduced in [@P2128R6].
 
 # Wording
 
 The wording is relative to [@N4964].
 
-In 17.3.2 ([@version.syn]), add:
+In 17.3.2 ([[version.syn]](https://eel.is/c++draft/version.syn)), add:
 
 ::: add
 
@@ -50,7 +47,7 @@ In 17.3.2 ([@version.syn]), add:
 
 Adjust the placeholder value as needed so as to denote this proposal's date of adoption.
 
-In 24.7.3.6.1 ([@mdspan.mdspan.overview]), add the following immediately after the subscript operators:
+In 24.7.3.6.1 ([[mdspan.mdspan.overview]](https://eel.is/c++draft/mdspan.mdspan.overview)), add the following immediately after the subscript operators:
 
 ::: add
 
@@ -65,7 +62,7 @@ In 24.7.3.6.1 ([@mdspan.mdspan.overview]), add the following immediately after t
 
 :::
 
-In 24.7.3.6.3 ([@mdspan.mdspan.members]), add the following immediately after the subscript operators:
+In 24.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.members)), add the following immediately after the subscript operators:
 
 ::: add
 
@@ -96,23 +93,16 @@ In 24.7.3.6.3 ([@mdspan.mdspan.members]), add the following immediately after th
 
 # Reference Implementation
 
-The `at()` member functions have been implemented in the `std::mdspan` reference implementation from Kokkos project at Sandia National Laboratories [@kokkos/mdspan], see [@Implementation].
+The `at()` member functions have been implemented in the `std::mdspan` reference implementation from the Kokkos project at Sandia National Laboratories [@kokkos/mdspan], see [@kokkos/mdspan#302].
 
 ---
 references:
-  - id: mdspan.mdspan.overview
-    citation-label: mdspan.mdspan.overview
-    URL: https://eel.is/c++draft/mdspan.mdspan.overview
-  - id: mdspan.mdspan.members
-    citation-label: mdspan.mdspan.members
-    URL: https://eel.is/c++draft/mdspan.mdspan.members
-  - id: version.syn
-    citation-label: version.syn
-    URL: https://eel.is/c++draft/version.syn
   - id: kokkos/mdspan
     citation-label: kokkos/mdspan
+    title: "Reference implementation of mdspan"
     URL: https://github.com/kokkos/mdspan
-  - id: Implementation
-    citation-label: Implementation
+  - id: kokkos/mdspan#302
+    citation-label: kokkos/mdspan#302
+    title: "Add element access via `at()` to `std::mdspan`"
     URL: https://github.com/kokkos/mdspan/pull/302
 ---
