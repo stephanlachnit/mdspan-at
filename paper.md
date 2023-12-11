@@ -1,7 +1,7 @@
 ---
 title: mdspan.at()
 document: PxxxxR0
-date: 2023-12-02
+date: 2023-12-11
 audience:
 - Library Evolution Working Group (LEWG)
 - SG23 Safety and Security
@@ -76,9 +76,11 @@ In 24.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.m
 > - [7.2]{.pnum} `(is_nothrow_constructible_v<index_type, OtherIndexTypes> && ...)` is `true`, and
 > - [7.3]{.pnum} `sizeof...(OtherIndexTypes) == rank()` is `true`.
 >
-> [8]{.pnum} *Effects:* Equivalent to: `operator[](OtherIndexTypes... indices)` with bounds checking
+> [8]{.pnum} *Returns:* `(*this)[indices...]`
 >
-> [9]{.pnum} *Throws:* `out_of_range` if any index exceeds the extent for that dimension.
+> [9]{.pnum} *Throws:* `out_of_range` if\
+> `indices_v[i] >= extent(i)`\
+> for any `indices_v[i]` in `vector<OtherIndexTypes>({indices...})`.
 >
 > ```
 > template<class OtherIndexType>
@@ -93,12 +95,11 @@ In 24.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.m
 > - [10.1]{.pnum} `is_convertible_v<const OtherIndexType&, index_type>` is `true`, and
 > - [10.2]{.pnum} `is_nothrow_constructible_v<index_type, const OtherIndexType&>` is `true`.
 >
-> [11]{.pnum} *Effects:* Let `P` be a parameter pack such that\
-> `is_same_v<make_index_sequence<rank()>, index_sequence<P...>>`\
-> is `true`. Equivalent to:\
-> `return at(as_const(indices[P])...);`
+> [11]{.pnum} *Returns:* `(*this)[indices]`
 >
-> [12]{.pnum} *Throws:* `out_of_range` if any index exceeds the extent for that dimension.
+> [12]{.pnum} *Throws:* `out_of_range` if\
+> `indices[i] >= extent(i)`\
+> for any `indices[i]` in `indices`.
 
 :::
 
