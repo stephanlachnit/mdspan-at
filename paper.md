@@ -29,7 +29,7 @@ In [@P2821R4], element access with bounds checking via `at()` has been added to 
 
 The impact of this proposal on the standard is low. The proposed function signatures for the `at()` member functions are identical to the function signatures for the subscript operators as proposed in [@P0009R18].
 
-One consideration is that the `.at()` operator has previously not been used with multi-dimensional arguments. However, this was also true for the subscript operator  before the possibility was introduced in [@P2128R6].
+One consideration is that the `at()` method has previously not been used with multi-dimensional arguments. However, this was also true for the subscript operator  before the possibility was introduced in [@P2128R6].
 
 # Wording
 
