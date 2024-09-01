@@ -35,7 +35,7 @@ One consideration is that the `at()` method has previously not been used with mu
 
 # Wording
 
-The wording is relative to [@N4964].
+The wording is relative to [@N4981].
 
 In 17.3.2 ([[version.syn]](https://eel.is/c++draft/version.syn)), add:
 
