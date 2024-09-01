@@ -8,6 +8,8 @@ audience:
 author:
   - name: Stephan Lachnit
     email: <stephan.lachnit@cern.ch>
+  - name: Xavier Bonaventura ([BMW](https://www.bmwgroup.com/en/innovation/automated-driving.html))
+    email: <xavier.bonaventura@bmw.de>
 toc: true
 ---
 
