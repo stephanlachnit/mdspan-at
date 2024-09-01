@@ -81,7 +81,7 @@ In 24.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.m
 > [8]{.pnum} *Returns:* `(*this)[indices...]`
 >
 > [9]{.pnum} *Throws:* `out_of_range` if\
-> `indices_v[i] >= extent(i)`\
+> `indices_v[i] >= extent(i) || indices_v[i] < 0`\
 > for any `indices_v[i]` in `vector<OtherIndexTypes>({indices...})`.
 >
 > ```
@@ -100,7 +100,7 @@ In 24.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.m
 > [11]{.pnum} *Returns:* `(*this)[indices]`
 >
 > [12]{.pnum} *Throws:* `out_of_range` if\
-> `indices[i] >= extent(i)`\
+> `indices[i] >= extent(i) || indices[i] < 0`\
 > for any `indices[i]` in `indices`.
 
 :::
