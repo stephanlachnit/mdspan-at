@@ -1,7 +1,7 @@
 ---
 title: mdspan.at()
 document: P3383R0
-date: 2023-12-11
+date: today
 audience:
 - Library Evolution Working Group (LEWG)
 - SG23 Safety and Security
