@@ -1,6 +1,6 @@
 ---
 title: mdspan.at()
-document: P3383R0
+document: P3383R1
 date: today
 audience:
 - Library Evolution Working Group (LEWG)
@@ -35,36 +35,26 @@ One consideration is that the `at()` method has previously not been used with mu
 
 # Wording
 
-The wording is relative to [@N4981].
+The wording is relative to [@N4993].
 
-In 17.3.2 ([[version.syn]](https://eel.is/c++draft/version.syn)), add:
+In 17.3.2 ([[version.syn]](https://eel.is/c++draft/version.syn)), adjust the value of `__cpp_lib_mdspan` to the date of this proposal's adoption.
 
-::: add
-
-> ```
-> #define __cpp_lib_mdspan_at YYYYMML @_// also in_@ <mdspan>
-> ```
-
-:::
-
-Adjust the placeholder value as needed to denote this proposal's date of adoption.
-
-In 24.7.3.6.1 ([[mdspan.mdspan.overview]](https://eel.is/c++draft/mdspan.mdspan.overview)), add the following immediately after the subscript operators:
+In 23.7.3.6.1 ([[mdspan.mdspan.overview]](https://eel.is/c++draft/mdspan.mdspan.overview)), add the following immediately after the subscript operators:
 
 ::: add
 
 > ```
 > template<class... OtherIndexTypes>
->   constexpr reference at(OtherIndexTypes... indices) const;
+>   constexpr reference at(OtherIndexTypes... indices) const;   // freestanding-deleted
 > template<class OtherIndexType>
->   constexpr reference at(span<OtherIndexType, rank()> indices) const;
+>   constexpr reference at(span<OtherIndexType, rank()> indices) const;   // freestanding-deleted
 > template<class OtherIndexType>
->   constexpr reference at(const array<OtherIndexType, rank()>& indices) const;
+>   constexpr reference at(const array<OtherIndexType, rank()>& indices) const;   // freestanding-deleted
 > ```
 
 :::
 
-In 24.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.members)), add the following immediately after the subscript operators:
+In 23.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.members)), add the following immediately after the subscript operators:
 
 ::: add
 
