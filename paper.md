@@ -25,7 +25,7 @@ The new `at()` member functions provide memory-safe element access to `std::mdsp
 
 ## Consistency
 
-In [@P2821R4], element access with bounds checking via `at()` has been added to `std::span`. One of the main motivations for this change was consistency with other containers that have element access with bounds checking via `at()`. Similarly, such element access should be added to `std::mdspan`.
+In [@P2821R5], element access with bounds checking via `at()` has been added to `std::span`. One of the main motivations for this change was consistency with other containers that have element access with bounds checking via `at()`. Similarly, such element access should be added to `std::mdspan`.
 
 # Impact On the Standard
 
