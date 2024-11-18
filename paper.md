@@ -39,6 +39,22 @@ The wording is relative to [@N4993].
 
 In 17.3.2 ([[version.syn]](https://eel.is/c++draft/version.syn)), adjust the value of `__cpp_lib_mdspan` to the date of this proposal's adoption.
 
+In 23.7.3.2 ([[mdspan.syn]](https://eel.is/c++draft/mdspan.syn)), change the following lines:
+
+```diff
+- // all freestanding
++ // mostly freestanding
+namespace std {
+```
+
+```diff
+// 23.7.3.6, class template mdspan
+template<class ElementType, class Extents, class LayoutPolicy = layout_right,
+         class AccessorPolicy = default_accessor<ElementType>>
+-  class mdspan;
++  class mdspan;                                                                // partially freestanding
+```
+
 In 23.7.3.6.1 ([[mdspan.mdspan.overview]](https://eel.is/c++draft/mdspan.mdspan.overview)), add the following immediately after the subscript operators:
 
 ::: add
