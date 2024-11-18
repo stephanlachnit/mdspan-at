@@ -25,7 +25,7 @@ The new `at()` member functions provide memory-safe element access to `std::mdsp
 
 ## Consistency
 
-In [@P2821R4], element access with bounds checking via `at()` has been added to `std::span`. One of the main motivations for this change was consistency with other containers that have element access with bounds checking via `at()`. Similarly, such element access should be added to `std::mdspan`.
+In [@P2821R5], element access with bounds checking via `at()` has been added to `std::span`. One of the main motivations for this change was consistency with other containers that have element access with bounds checking via `at()`. Similarly, such element access should be added to `std::mdspan`.
 
 # Impact On the Standard
 
@@ -38,6 +38,22 @@ One consideration is that the `at()` method has previously not been used with mu
 The wording is relative to [@N4993].
 
 In 17.3.2 ([[version.syn]](https://eel.is/c++draft/version.syn)), adjust the value of `__cpp_lib_mdspan` to the date of this proposal's adoption.
+
+In 23.7.3.2 ([[mdspan.syn]](https://eel.is/c++draft/mdspan.syn)), change the following lines:
+
+```diff
+- // all freestanding
++ // mostly freestanding
+namespace std {
+```
+
+```diff
+// 23.7.3.6, class template mdspan
+template<class ElementType, class Extents, class LayoutPolicy = layout_right,
+         class AccessorPolicy = default_accessor<ElementType>>
+-  class mdspan;
++  class mdspan;                                                                // partially freestanding
+```
 
 In 23.7.3.6.1 ([[mdspan.mdspan.overview]](https://eel.is/c++draft/mdspan.mdspan.overview)), add the following immediately after the subscript operators:
 
