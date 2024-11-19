@@ -17,6 +17,16 @@ toc: true
 
 This paper proposes element access with bounds checking to `std::mdspan` via `at()` member functions.
 
+# Revision history
+
+## R1
+
+Update wording to align with [@P2821R5]
+
+## R0
+
+Initial version
+
 # Motivation
 
 ## Safety
