@@ -21,7 +21,10 @@ This paper proposes element access with bounds checking to `std::mdspan` via `at
 
 ## R1
 
-Update wording to align with [@P2821R5]
+Update wording to align with [@P2821R5]:
+
+- Bump `__cpp_lib_mdspan` instead of adding `__cpp_lib_mdspan_at`
+- Mark `at()` as freestanding deleted and adjust freestanding comments of header and class
 
 ## R0
 
