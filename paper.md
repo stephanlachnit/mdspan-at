@@ -104,7 +104,7 @@ In 23.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.m
 >
 > [9]{.pnum} Let `I` be `extents_type::`*`index_cast`*`(std::move(indices))`.
 >
-> [10]{.pnum} *Throws:* `out_of_range` if `I` is not a multidimensional index in `extends()`.
+> [10]{.pnum} *Throws:* `out_of_range` if `I` is not a multidimensional index in `extents()`.
 >
 > ```
 > template<class OtherIndexType>
