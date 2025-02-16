@@ -1,6 +1,6 @@
 ---
 title: mdspan.at()
-document: P3383R1
+document: P3383R2
 date: today
 audience:
 - Library Evolution Working Group (LEWG)
@@ -18,6 +18,11 @@ toc: true
 This paper proposes element access with bounds checking to `std::mdspan` via `at()` member functions.
 
 # Revision history
+
+## R2
+
+- Remove feature test macro bump requested by LEWG
+- Adapt wording to follow same pattern like `operator[]` and rebase on top of latest draft
 
 ## R1
 
@@ -48,9 +53,7 @@ One consideration is that the `at()` method has previously not been used with mu
 
 # Wording
 
-The wording is relative to [@N4993].
-
-In 17.3.2 ([[version.syn]](https://eel.is/c++draft/version.syn)), adjust the value of `__cpp_lib_mdspan` to the date of this proposal's adoption.
+The wording is relative to [@N5001].
 
 In 23.7.3.2 ([[mdspan.syn]](https://eel.is/c++draft/mdspan.syn)), change the following lines:
 
@@ -97,11 +100,11 @@ In 23.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.m
 > - [7.2]{.pnum} `(is_nothrow_constructible_v<index_type, OtherIndexTypes> && ...)` is `true`, and
 > - [7.3]{.pnum} `sizeof...(OtherIndexTypes) == rank()` is `true`.
 >
-> [8]{.pnum} *Returns:* `(*this)[indices...]`
+> [8]{.pnum} *Returns:* `(*this)[indices...]`.
 >
-> [9]{.pnum} *Throws:* `out_of_range` if\
-> `indices_v[i] >= extent(i) || indices_v[i] < 0`\
-> for any `indices_v[i]` in `vector<OtherIndexTypes>({indices...})`.
+> [9]{.pnum} Let `I` be `extents_type::`*`index_cast`*`(std::move(indices))`.
+>
+> [10]{.pnum} *Throws:* `out_of_range` if `I` is not a multidimensional index in `extents()`.
 >
 > ```
 > template<class OtherIndexType>
@@ -111,18 +114,29 @@ In 23.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.m
 > template<class OtherIndexType>
 >   constexpr reference at(const array<OtherIndexType, rank()>& indices) const;
 > ```
-> [10]{.pnum} *Constraints:*
+> [11]{.pnum} *Constraints:*
 >
-> - [10.1]{.pnum} `is_convertible_v<const OtherIndexType&, index_type>` is `true`, and
-> - [10.2]{.pnum} `is_nothrow_constructible_v<index_type, const OtherIndexType&>` is `true`.
+> - [11.1]{.pnum} `is_convertible_v<const OtherIndexType&, index_type>` is `true`, and
+> - [11.2]{.pnum} `is_nothrow_constructible_v<index_type, const OtherIndexType&>` is `true`.
 >
-> [11]{.pnum} *Returns:* `(*this)[indices]`
->
-> [12]{.pnum} *Throws:* `out_of_range` if\
-> `indices[i] >= extent(i) || indices[i] < 0`\
-> for any `indices[i]` in `indices`.
+> [12]{.pnum} *Effects:* Let `P` be a parameter pack such that
+>   `is_same_v<make_index_sequence<rank()>, index_sequence<P...>>`
+> is `true`. Equivalent to:
+>   `return at(extents_type::`*`index-cast`*`(as_const(indices[P]))...);`
 
 :::
+
+# Feature Test Macro
+
+LEWG decided to drop the bump of the feature test macro.
+
+## Poll
+
+Remove the feature test macro bump from P3383R1
+
+| SF | F | N | A | SA |
+|----|---|---|---|----|
+|  4 | 4 | 4 | 2 |  0 |
 
 # Reference Implementation
 
