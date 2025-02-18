@@ -3,8 +3,7 @@ title: mdspan.at()
 document: P3383R2
 date: today
 audience:
-- Library Evolution Working Group (LEWG)
-- SG23 Safety and Security
+  - Library Working Group (LWG)
 author:
   - name: Stephan Lachnit
     email: <stephan.lachnit@cern.ch>
