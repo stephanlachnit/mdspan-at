@@ -1,6 +1,6 @@
 ---
 title: mdspan.at()
-document: P3383R2
+document: P3383R3
 date: today
 audience:
   - Library Working Group (LWG)
@@ -17,6 +17,10 @@ toc: true
 This paper proposes element access with bounds checking to `std::mdspan` via `at()` member functions.
 
 # Revision history
+
+## R3
+
+- Swap paragraph 8 and 9 and use `I` instead of `indices`
 
 ## R2
 
@@ -99,9 +103,9 @@ In 23.7.3.6.3 ([[mdspan.mdspan.members]](https://eel.is/c++draft/mdspan.mdspan.m
 > - [7.2]{.pnum} `(is_nothrow_constructible_v<index_type, OtherIndexTypes> && ...)` is `true`, and
 > - [7.3]{.pnum} `sizeof...(OtherIndexTypes) == rank()` is `true`.
 >
-> [8]{.pnum} *Returns:* `(*this)[indices...]`.
->
-> [9]{.pnum} Let `I` be `extents_type::`*`index_cast`*`(std::move(indices))`.
+> [8]{.pnum} Let `I` be `extents_type::`*`index_cast`*`(std::move(indices))`.
+> 
+> [9]{.pnum} *Returns:* `(*this)[I...]`.
 >
 > [10]{.pnum} *Throws:* `out_of_range` if `I` is not a multidimensional index in `extents()`.
 >
